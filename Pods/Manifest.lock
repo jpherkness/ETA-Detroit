@@ -1,0 +1,17 @@
+PODS:
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - SnapKit (3.1.2)
+
+DEPENDENCIES:
+  - FMDB
+  - SnapKit (~> 3.1.2)
+
+SPEC CHECKSUMS:
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+
+PODFILE CHECKSUM: 60e958108710d210ae48c61faee25036f982afd3
+
+COCOAPODS: 1.1.1

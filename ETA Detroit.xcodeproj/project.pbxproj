@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		459A1BBBF123C0546BDBF55C /* Pods_ETA_DetroitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D00CE8FAF263DF273549EB /* Pods_ETA_DetroitUITests.framework */; };
+		5ADAC57A35DF6B89916CE6AC /* Pods_ETA_DetroitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7B72F6942D4FF4178D7115 /* Pods_ETA_DetroitTests.framework */; };
+		738D25224ABFCBA36ED7E3B0 /* Pods_ETA_Detroit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */; };
 		7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */; };
 		7C4D30471E2E5FBB00EEF8BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30461E2E5FBB00EEF8BE /* ViewController.swift */; };
 		7C4D304A1E2E5FBB00EEF8BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D30481E2E5FBB00EEF8BE /* Main.storyboard */; };
@@ -14,6 +17,18 @@
 		7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D304D1E2E5FBB00EEF8BE /* LaunchScreen.storyboard */; };
 		7C4D305A1E2E5FBC00EEF8BE /* ETA_DetroitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30591E2E5FBC00EEF8BE /* ETA_DetroitTests.swift */; };
 		7C4D30651E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30641E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift */; };
+		7C4D30741E2E8DAF00EEF8BE /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */; };
+		7CDF6F501E2EB93300A9BA43 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */; };
+		7CDF6F521E3108D600A9BA43 /* DDOTRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F511E3108D600A9BA43 /* DDOTRoutesController.swift */; };
+		7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F531E3108F500A9BA43 /* SmartBusRoutesController.swift */; };
+		7CDF6F561E31090500A9BA43 /* ReflexRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F551E31090500A9BA43 /* ReflexRoutesController.swift */; };
+		7CDF6F581E31091600A9BA43 /* RoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F571E31091600A9BA43 /* RoutesController.swift */; };
+		7CDF6F5C1E310EEE00A9BA43 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */; };
+		7CDF6F5E1E31151B00A9BA43 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDF6F5D1E31151B00A9BA43 /* libsqlite3.0.tbd */; };
+		7CDF6F641E3132AD00A9BA43 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */; };
+		7CDF6F671E313AA300A9BA43 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F661E313AA200A9BA43 /* Route.swift */; };
+		7CDF6F6F1E3159AD00A9BA43 /* DDOTRoutes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */; };
+		7CDF6F701E3159AD00A9BA43 /* SmartBusRoutes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ETA_Detroit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F45144627649AC9133B7460 /* Pods-ETA DetroitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5D0D86DCF18489D272F12BCF /* Pods-ETA Detroit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.release.xcconfig"; sourceTree = "<group>"; };
 		7C4D30411E2E5FBB00EEF8BE /* ETA Detroit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETA Detroit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C4D30461E2E5FBB00EEF8BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +65,24 @@
 		7C4D30601E2E5FBC00EEF8BE /* ETA DetroitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETA DetroitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D30641E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA_DetroitUITests.swift; sourceTree = "<group>"; };
 		7C4D30661E2E5FBC00EEF8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7CDF6F511E3108D600A9BA43 /* DDOTRoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOTRoutesController.swift; sourceTree = "<group>"; };
+		7CDF6F531E3108F500A9BA43 /* SmartBusRoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartBusRoutesController.swift; sourceTree = "<group>"; };
+		7CDF6F551E31090500A9BA43 /* ReflexRoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflexRoutesController.swift; sourceTree = "<group>"; };
+		7CDF6F571E31091600A9BA43 /* RoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesController.swift; sourceTree = "<group>"; };
+		7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		7CDF6F5D1E31151B00A9BA43 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		7CDF6F661E313AA200A9BA43 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DDOTRoutes.sqlite; sourceTree = "<group>"; };
+		7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartBusRoutes.sqlite; sourceTree = "<group>"; };
+		88391CC479D1261CCE52A3A2 /* Pods-ETA Detroit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.debug.xcconfig"; sourceTree = "<group>"; };
+		9DD9F91D456972FF4EB32EE3 /* Pods-ETA DetroitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.release.xcconfig"; sourceTree = "<group>"; };
+		B1A4BE66AE916C783E2ADD7C /* Pods-ETA DetroitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB7B72F6942D4FF4178D7115 /* Pods_ETA_DetroitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ETA_DetroitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4D00CE8FAF263DF273549EB /* Pods_ETA_DetroitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ETA_DetroitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A4BF5E46FA8BCE13049110 /* Pods-ETA DetroitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDF6F5E1E31151B00A9BA43 /* libsqlite3.0.tbd in Frameworks */,
+				738D25224ABFCBA36ED7E3B0 /* Pods_ETA_Detroit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADAC57A35DF6B89916CE6AC /* Pods_ETA_DetroitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459A1BBBF123C0546BDBF55C /* Pods_ETA_DetroitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +121,8 @@
 				7C4D30581E2E5FBC00EEF8BE /* ETA DetroitTests */,
 				7C4D30631E2E5FBC00EEF8BE /* ETA DetroitUITests */,
 				7C4D30421E2E5FBB00EEF8BE /* Products */,
+				D4C2F19193679EF3B7845AE2 /* Pods */,
+				E35E7339AA4A017015563D8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +139,17 @@
 		7C4D30431E2E5FBB00EEF8BE /* ETA Detroit */ = {
 			isa = PBXGroup;
 			children = (
+				7CDF6F651E313A6500A9BA43 /* Models */,
+				7CDF6F611E3128A800A9BA43 /* Data */,
+				7CFAF0EB1E2E95A500FA5DCD /* Views */,
+				7C4D30721E2E734400EEF8BE /* Controllers */,
 				7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */,
-				7C4D30461E2E5FBB00EEF8BE /* ViewController.swift */,
 				7C4D30481E2E5FBB00EEF8BE /* Main.storyboard */,
 				7C4D304B1E2E5FBB00EEF8BE /* Assets.xcassets */,
 				7C4D304D1E2E5FBB00EEF8BE /* LaunchScreen.storyboard */,
 				7C4D30501E2E5FBB00EEF8BE /* Info.plist */,
+				7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */,
+				7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */,
 			);
 			path = "ETA Detroit";
 			sourceTree = "<group>";
@@ -125,6 +172,68 @@
 			path = "ETA DetroitUITests";
 			sourceTree = "<group>";
 		};
+		7C4D30721E2E734400EEF8BE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D30461E2E5FBB00EEF8BE /* ViewController.swift */,
+				7CDF6F511E3108D600A9BA43 /* DDOTRoutesController.swift */,
+				7CDF6F531E3108F500A9BA43 /* SmartBusRoutesController.swift */,
+				7CDF6F551E31090500A9BA43 /* ReflexRoutesController.swift */,
+				7CDF6F571E31091600A9BA43 /* RoutesController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7CDF6F611E3128A800A9BA43 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */,
+				7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		7CDF6F651E313A6500A9BA43 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF6F661E313AA200A9BA43 /* Route.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		7CFAF0EB1E2E95A500FA5DCD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */,
+				7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D4C2F19193679EF3B7845AE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88391CC479D1261CCE52A3A2 /* Pods-ETA Detroit.debug.xcconfig */,
+				5D0D86DCF18489D272F12BCF /* Pods-ETA Detroit.release.xcconfig */,
+				B1A4BE66AE916C783E2ADD7C /* Pods-ETA DetroitTests.debug.xcconfig */,
+				9DD9F91D456972FF4EB32EE3 /* Pods-ETA DetroitTests.release.xcconfig */,
+				F5A4BF5E46FA8BCE13049110 /* Pods-ETA DetroitUITests.debug.xcconfig */,
+				3F45144627649AC9133B7460 /* Pods-ETA DetroitUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E35E7339AA4A017015563D8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF6F5D1E31151B00A9BA43 /* libsqlite3.0.tbd */,
+				097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */,
+				BB7B72F6942D4FF4178D7115 /* Pods_ETA_DetroitTests.framework */,
+				E4D00CE8FAF263DF273549EB /* Pods_ETA_DetroitUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +241,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C4D30691E2E5FBC00EEF8BE /* Build configuration list for PBXNativeTarget "ETA Detroit" */;
 			buildPhases = (
+				B37F38EC0A0616BD7CC3271D /* [CP] Check Pods Manifest.lock */,
 				7C4D303D1E2E5FBB00EEF8BE /* Sources */,
 				7C4D303E1E2E5FBB00EEF8BE /* Frameworks */,
 				7C4D303F1E2E5FBB00EEF8BE /* Resources */,
+				A3E128A0B5273403B52963DB /* [CP] Embed Pods Frameworks */,
+				B0BC7C155390C35B6D5C0FE0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +261,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C4D306C1E2E5FBC00EEF8BE /* Build configuration list for PBXNativeTarget "ETA DetroitTests" */;
 			buildPhases = (
+				D021DD4B2E459BD10B1AC226 /* [CP] Check Pods Manifest.lock */,
 				7C4D30511E2E5FBC00EEF8BE /* Sources */,
 				7C4D30521E2E5FBC00EEF8BE /* Frameworks */,
 				7C4D30531E2E5FBC00EEF8BE /* Resources */,
+				94DF047B922C0D5727DC704D /* [CP] Embed Pods Frameworks */,
+				0503094EBB892EA64758F2EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +282,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C4D306F1E2E5FBC00EEF8BE /* Build configuration list for PBXNativeTarget "ETA DetroitUITests" */;
 			buildPhases = (
+				FED69A6EB1B84B4CE7D66AE9 /* [CP] Check Pods Manifest.lock */,
 				7C4D305C1E2E5FBC00EEF8BE /* Sources */,
 				7C4D305D1E2E5FBC00EEF8BE /* Frameworks */,
 				7C4D305E1E2E5FBC00EEF8BE /* Resources */,
+				436380B0E1ECF0D7082841CA /* [CP] Embed Pods Frameworks */,
+				9384D725734B8C5F6CD51E99 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,6 +352,8 @@
 			files = (
 				7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */,
 				7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */,
+				7CDF6F6F1E3159AD00A9BA43 /* DDOTRoutes.sqlite in Resources */,
+				7CDF6F701E3159AD00A9BA43 /* SmartBusRoutes.sqlite in Resources */,
 				7C4D304A1E2E5FBB00EEF8BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,13 +374,160 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0503094EBB892EA64758F2EB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		436380B0E1ECF0D7082841CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9384D725734B8C5F6CD51E99 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94DF047B922C0D5727DC704D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3E128A0B5273403B52963DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0BC7C155390C35B6D5C0FE0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B37F38EC0A0616BD7CC3271D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D021DD4B2E459BD10B1AC226 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FED69A6EB1B84B4CE7D66AE9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7C4D303D1E2E5FBB00EEF8BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDF6F521E3108D600A9BA43 /* DDOTRoutesController.swift in Sources */,
 				7C4D30471E2E5FBB00EEF8BE /* ViewController.swift in Sources */,
+				7CDF6F671E313AA300A9BA43 /* Route.swift in Sources */,
 				7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */,
+				7CDF6F561E31090500A9BA43 /* ReflexRoutesController.swift in Sources */,
+				7CDF6F5C1E310EEE00A9BA43 /* DatabaseManager.swift in Sources */,
+				7C4D30741E2E8DAF00EEF8BE /* CompanyView.swift in Sources */,
+				7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */,
+				7CDF6F501E2EB93300A9BA43 /* Constants.swift in Sources */,
+				7CDF6F581E31091600A9BA43 /* RoutesController.swift in Sources */,
+				7CDF6F641E3132AD00A9BA43 /* RouteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,11 +677,12 @@
 		};
 		7C4D306A1E2E5FBC00EEF8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88391CC479D1261CCE52A3A2 /* Pods-ETA Detroit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.josephherkness.ETA-Detroit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -422,11 +690,12 @@
 		};
 		7C4D306B1E2E5FBC00EEF8BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D0D86DCF18489D272F12BCF /* Pods-ETA Detroit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.josephherkness.ETA-Detroit";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -434,6 +703,7 @@
 		};
 		7C4D306D1E2E5FBC00EEF8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1A4BE66AE916C783E2ADD7C /* Pods-ETA DetroitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,6 +718,7 @@
 		};
 		7C4D306E1E2E5FBC00EEF8BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DD9F91D456972FF4EB32EE3 /* Pods-ETA DetroitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,6 +733,7 @@
 		};
 		7C4D30701E2E5FBC00EEF8BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5A4BF5E46FA8BCE13049110 /* Pods-ETA DetroitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "ETA DetroitUITests/Info.plist";
@@ -475,6 +747,7 @@
 		};
 		7C4D30711E2E5FBC00EEF8BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F45144627649AC9133B7460 /* Pods-ETA DetroitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "ETA DetroitUITests/Info.plist";
@@ -505,6 +778,7 @@
 				7C4D306B1E2E5FBC00EEF8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C4D306C1E2E5FBC00EEF8BE /* Build configuration list for PBXNativeTarget "ETA DetroitTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +787,7 @@
 				7C4D306E1E2E5FBC00EEF8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C4D306F1E2E5FBC00EEF8BE /* Build configuration list for PBXNativeTarget "ETA DetroitUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +796,7 @@
 				7C4D30711E2E5FBC00EEF8BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,6 @@
+framework module Pods_ETA_DetroitUITests {
+  umbrella header "Pods-ETA DetroitUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let viewController = ViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        
+        // Set default application apperance
+        UINavigationBar.appearance().isTranslucent = false
+        application.statusBarStyle = UIStatusBarStyle.lightContent
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
         return true
     }
 
