@@ -1,16 +1,38 @@
-//
-//  RouteCell.swift
-//  ETA Detroit
-//
-//  Created by Joseph Herkness on 1/19/17.
-//  Copyright © 2017 Joseph Herkness. All rights reserved.
-//
+/**
+ * Copyright (c) 2017 RIIS LLC
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * Author: Joseph Herkness
+ */
 
 import UIKit
 
+
+// MARK: - RouteCell
+
 class RouteCell: UITableViewCell {
     
-    let routeLabel: UILabel = {
+    
+    // MARK: Private
+    
+    private let routeLabel: UILabel = {
         var label = UILabel()
         label.text = "ROUTE"
         label.textColor = Color.routeLabelColor
@@ -20,7 +42,7 @@ class RouteCell: UITableViewCell {
         return label
     }()
     
-    let routeNumberLabel: UILabel = {
+    private let routeNumberLabel: UILabel = {
         var label = UILabel()
         label.textColor = Color.routeLabelColor
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -28,10 +50,13 @@ class RouteCell: UITableViewCell {
         return label
     }()
     
-    let routeNameLabel: UILabel = {
+    private let routeNameLabel: UILabel = {
         var label = UILabel()
         return label
     }()
+    
+    
+    // Mark: UITableViewCell
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,22 +66,6 @@ class RouteCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         prepareCell()
-    }
-    
-    func prepareCell() {
-        addSubview(routeLabel)
-        addSubview(routeNumberLabel)
-        addSubview(routeNameLabel)
-        
-        setNeedsUpdateConstraints()
-    }
-    
-    func configureCell(route: Route) {
-        guard let name = route.name, let number = route.number else {
-            return
-        }
-        routeNameLabel.text = name
-        routeNumberLabel.text = number
     }
     
     override func updateConstraints() {
@@ -81,6 +90,25 @@ class RouteCell: UITableViewCell {
         }
         
         super.updateConstraints()
+    }
+    
+    
+    // MARK: Public
+    
+    func prepareCell() {
+        addSubview(routeLabel)
+        addSubview(routeNumberLabel)
+        addSubview(routeNameLabel)
+        
+        setNeedsUpdateConstraints()
+    }
+    
+    func configureCell(route: Route) {
+        guard let name = route.name, let number = route.number else {
+            return
+        }
+        routeNameLabel.text = name
+        routeNumberLabel.text = number
     }
 
 }

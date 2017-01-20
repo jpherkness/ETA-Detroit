@@ -11,7 +11,7 @@ import UIKit
 struct Color {
     
     // Application Colors
-    static let primary = UIColor(red:0.15, green:0.60, blue:0.46, alpha:1.00)
+    static let primary = UIColor(red:0.19, green:0.24, blue:0.27, alpha:1.00)
     static let routeLabelColor = UIColor(red:0.44, green:0.71, blue:0.95, alpha:1.00)
     
     // Brand Colors

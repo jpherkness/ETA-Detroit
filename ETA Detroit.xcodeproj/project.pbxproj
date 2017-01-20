@@ -17,7 +17,7 @@
 		7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D304D1E2E5FBB00EEF8BE /* LaunchScreen.storyboard */; };
 		7C4D305A1E2E5FBC00EEF8BE /* ETA_DetroitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30591E2E5FBC00EEF8BE /* ETA_DetroitTests.swift */; };
 		7C4D30651E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30641E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift */; };
-		7C4D30741E2E8DAF00EEF8BE /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */; };
+		7C4D30741E2E8DAF00EEF8BE /* BusCompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30731E2E8DAF00EEF8BE /* BusCompanyView.swift */; };
 		7CDF6F501E2EB93300A9BA43 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */; };
 		7CDF6F521E3108D600A9BA43 /* DDOTRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F511E3108D600A9BA43 /* DDOTRoutesController.swift */; };
 		7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F531E3108F500A9BA43 /* SmartBusRoutesController.swift */; };
@@ -28,7 +28,7 @@
 		7CDF6F641E3132AD00A9BA43 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */; };
 		7CDF6F671E313AA300A9BA43 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F661E313AA200A9BA43 /* Route.swift */; };
 		7CDF6F6F1E3159AD00A9BA43 /* DDOTRoutes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */; };
-		7CDF6F701E3159AD00A9BA43 /* SmartBusRoutes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */; };
+		7CDF6F701E3159AD00A9BA43 /* SmartRoutes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF6F6E1E3159AD00A9BA43 /* SmartRoutes.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		7C4D30601E2E5FBC00EEF8BE /* ETA DetroitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETA DetroitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D30641E2E5FBC00EEF8BE /* ETA_DetroitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA_DetroitUITests.swift; sourceTree = "<group>"; };
 		7C4D30661E2E5FBC00EEF8BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		7C4D30731E2E8DAF00EEF8BE /* BusCompanyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCompanyView.swift; sourceTree = "<group>"; };
 		7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7CDF6F511E3108D600A9BA43 /* DDOTRoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOTRoutesController.swift; sourceTree = "<group>"; };
 		7CDF6F531E3108F500A9BA43 /* SmartBusRoutesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartBusRoutesController.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		7CDF6F661E313AA200A9BA43 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DDOTRoutes.sqlite; sourceTree = "<group>"; };
-		7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartBusRoutes.sqlite; sourceTree = "<group>"; };
+		7CDF6F6E1E3159AD00A9BA43 /* SmartRoutes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartRoutes.sqlite; sourceTree = "<group>"; };
 		88391CC479D1261CCE52A3A2 /* Pods-ETA Detroit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.debug.xcconfig"; sourceTree = "<group>"; };
 		9DD9F91D456972FF4EB32EE3 /* Pods-ETA DetroitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1A4BE66AE916C783E2ADD7C /* Pods-ETA DetroitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,8 +139,9 @@
 		7C4D30431E2E5FBB00EEF8BE /* ETA Detroit */ = {
 			isa = PBXGroup;
 			children = (
+				7CDF6F721E319D1400A9BA43 /* Resources */,
+				7CDF6F711E319CFA00A9BA43 /* Stores */,
 				7CDF6F651E313A6500A9BA43 /* Models */,
-				7CDF6F611E3128A800A9BA43 /* Data */,
 				7CFAF0EB1E2E95A500FA5DCD /* Views */,
 				7C4D30721E2E734400EEF8BE /* Controllers */,
 				7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */,
@@ -149,7 +150,6 @@
 				7C4D304D1E2E5FBB00EEF8BE /* LaunchScreen.storyboard */,
 				7C4D30501E2E5FBB00EEF8BE /* Info.plist */,
 				7CDF6F4F1E2EB93300A9BA43 /* Constants.swift */,
-				7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */,
 			);
 			path = "ETA Detroit";
 			sourceTree = "<group>";
@@ -184,15 +184,6 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		7CDF6F611E3128A800A9BA43 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */,
-				7CDF6F6E1E3159AD00A9BA43 /* SmartBusRoutes.sqlite */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		7CDF6F651E313A6500A9BA43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,10 +192,27 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		7CDF6F711E319CFA00A9BA43 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		7CDF6F721E319D1400A9BA43 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF6F6D1E3159AD00A9BA43 /* DDOTRoutes.sqlite */,
+				7CDF6F6E1E3159AD00A9BA43 /* SmartRoutes.sqlite */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		7CFAF0EB1E2E95A500FA5DCD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7C4D30731E2E8DAF00EEF8BE /* CompanyView.swift */,
+				7C4D30731E2E8DAF00EEF8BE /* BusCompanyView.swift */,
 				7CDF6F631E3132AD00A9BA43 /* RouteCell.swift */,
 			);
 			name = Views;
@@ -353,7 +361,7 @@
 				7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */,
 				7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */,
 				7CDF6F6F1E3159AD00A9BA43 /* DDOTRoutes.sqlite in Resources */,
-				7CDF6F701E3159AD00A9BA43 /* SmartBusRoutes.sqlite in Resources */,
+				7CDF6F701E3159AD00A9BA43 /* SmartRoutes.sqlite in Resources */,
 				7C4D304A1E2E5FBB00EEF8BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,7 +531,7 @@
 				7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */,
 				7CDF6F561E31090500A9BA43 /* ReflexRoutesController.swift in Sources */,
 				7CDF6F5C1E310EEE00A9BA43 /* DatabaseManager.swift in Sources */,
-				7C4D30741E2E8DAF00EEF8BE /* CompanyView.swift in Sources */,
+				7C4D30741E2E8DAF00EEF8BE /* BusCompanyView.swift in Sources */,
 				7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */,
 				7CDF6F501E2EB93300A9BA43 /* Constants.swift in Sources */,
 				7CDF6F581E31091600A9BA43 /* RoutesController.swift in Sources */,
