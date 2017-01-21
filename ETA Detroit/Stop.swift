@@ -22,33 +22,28 @@
  * Author: Joseph Herkness
  */
 
-import UIKit
-
-import SnapKit
+import Foundation
 
 
-// MARK: - DDOTRoutesController
+// MARK: - Stop
 
-class DDOTRoutesController: RoutesController {
+class Stop: NSObject {
     
     
-    // MARK: RoutesController
+    // MARK: Public
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var name: String?
+    var number: String?
+    var direction: String?
+    var latitude: Double?
+    var longitude: Double?
+    var active: Bool?
+    
+    init(name: String?, number: String?, direction: String?, latitude: Double?, longitude: Double?, active: Bool?) {
+        self.name = name
+        self.number = number
+        self.direction = direction
+        self.latitude = latitude
+        self.longitude = longitude
     }
-    
-    override func prepare() {
-        super.prepare()
-        
-        title = "DDOT Bus Routes"
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = Color.primary
-    }
-    
-    override func loadRoutes() {
-        super.loadRoutes()
-        routes = DatabaseManager.shared.getDDOTRoutes()
-    }
-    
 }

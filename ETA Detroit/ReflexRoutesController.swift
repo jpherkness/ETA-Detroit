@@ -38,6 +38,8 @@ class ReflexRoutesController: RoutesController {
     
     override func prepare() {
         super.prepare()
+        
+        title = "Reflex Bus Routes"
     }
     
     override func loadRoutes() {

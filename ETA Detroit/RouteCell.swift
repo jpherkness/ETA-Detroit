@@ -55,6 +55,8 @@ class RouteCell: UITableViewCell {
         return label
     }()
     
+    private let leftBox = UIView()
+    
     
     // Mark: UITableViewCell
     
@@ -69,23 +71,25 @@ class RouteCell: UITableViewCell {
     }
     
     override func updateConstraints() {
-        routeLabel.snp.makeConstraints { make in
-            make.top.equalTo(self)
+        
+        leftBox.snp.makeConstraints { make in
+            make.centerY.equalTo(self)
             make.left.equalTo(self)
-            make.bottom.equalTo(routeNumberLabel.snp.top)
             make.width.equalTo(60)
-            make.height.equalTo(20)
+        }
+        
+        routeLabel.snp.makeConstraints { make in
+            make.top.left.right.equalTo(leftBox)
+            make.bottom.equalTo(leftBox.snp.centerY)
         }
         
         routeNumberLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(self).inset(5)
-            make.left.equalTo(self)
-            make.top.equalTo(routeLabel.snp.bottom)
-            make.width.equalTo(60)
+            make.bottom.left.right.equalTo(leftBox)
+            make.top.equalTo(leftBox.snp.centerY)
         }
         
         routeNameLabel.snp.makeConstraints { make in
-            make.left.equalTo(routeLabel.snp.right)
+            make.left.equalTo(leftBox.snp.right)
             make.right.top.bottom.equalTo(self)
         }
         
@@ -96,8 +100,9 @@ class RouteCell: UITableViewCell {
     // MARK: Public
     
     func prepareCell() {
-        addSubview(routeLabel)
-        addSubview(routeNumberLabel)
+        leftBox.addSubview(routeLabel)
+        leftBox.addSubview(routeNumberLabel)
+        addSubview(leftBox)
         addSubview(routeNameLabel)
         
         setNeedsUpdateConstraints()
@@ -109,6 +114,7 @@ class RouteCell: UITableViewCell {
         }
         routeNameLabel.text = name
         routeNumberLabel.text = number
+        
     }
 
 }

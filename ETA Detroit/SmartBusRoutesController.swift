@@ -39,7 +39,7 @@ class SmartRoutesController: RoutesController {
     override func prepare() {
         super.prepare()
         
-        title = "Detroit Smart Bus Routes"
+        title = "Smart Bus Routes"
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = Color.primary
     }

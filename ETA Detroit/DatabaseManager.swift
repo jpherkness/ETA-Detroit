@@ -36,9 +36,7 @@ class DatabaseManager: NSObject {
     
     // MARK: Private
     
-    private var DDOTRoutesDatabase: FMDatabase!
-    private var smartRoutesDatabase: FMDatabase!
-    private var reflexDatabase: FMDatabase!
+    private var database: FMDatabase!
     
     
     // MARK: NSObject
@@ -53,55 +51,49 @@ class DatabaseManager: NSObject {
     
     func initalizeDatabases() {
         
-        let DDOTRoutesDatabaseSourcePath = Bundle.main.path(forResource: "DDOTRoutes", ofType: "sqlite")
-        DDOTRoutesDatabase = FMDatabase(path: DDOTRoutesDatabaseSourcePath)
-        
-        let smartRoutesDatabaseSourcePath = Bundle.main.path(forResource: "SmartRoutes", ofType: "sqlite")
-        smartRoutesDatabase = FMDatabase(path: smartRoutesDatabaseSourcePath)
+        let DDOTRoutesDatabaseSourcePath = Bundle.main.path(forResource: "ETADetroit", ofType: "db")
+        database = FMDatabase(path: DDOTRoutesDatabaseSourcePath)
+    
     }
     
-    func getDDOTRoutes() -> Array<Route> {
+    func getDDOTRoutes() -> [Route] {
         
-        // An array of routes that will be returned
-        var routes = Array<Route>()
+        var routes = [Route]()
         
-        // Open the connection
-        guard DDOTRoutesDatabase.open() else {
-            print("Unable to open DDOTRoutesDatabase")
+        guard database.open() else {
+            print("Unable to open database")
             return routes
         }
         
-        // Load all the rows as route objects and return them
-        if DDOTRoutesDatabase != nil {
-            do {
-                let rs = try DDOTRoutesDatabase.executeQuery("select * from 'route' where Company='DDOT'", values: nil)
-                while rs.next() {
-                    if let company = rs.string(forColumn: "Company"),
-                        let routeID = rs.string(forColumn: "rt"),
-                        let number = rs.string(forColumn: "rtnum"),
-                        let name = rs.string(forColumn: "rtnm"),
-                        let direction1 = rs.string(forColumn: "direction1"),
-                        let direction2 = rs.string(forColumn: "direction2"),
-                        let active = rs.string(forColumn: "routeActive")
-                    {
-                        routes.append(
-                            Route(company: company,
+        do {
+            let rs = try database.executeQuery("select * from 'DDOT Routes' where Company='DDOT'", values: nil)
+            while rs.next() {
+                
+                let company = rs.string(forColumn: "Company")
+                let routeID = rs.string(forColumn: "rt")
+                let number = rs.string(forColumn: "rtnum")
+                let name = rs.string(forColumn: "rtnm")
+                let direction1 = rs.string(forColumn: "direction1")
+                let direction2 = rs.string(forColumn: "direction2")
+                let active = rs.string(forColumn: "routeActive")
+                
+                let normalizedString = name?.lowercased().capitalized
+                
+                let route = Route(company: company,
                                   routeID: routeID,
                                   number: number,
-                                  name: name.lowercased().capitalized,
+                                  name: normalizedString,
                                   direction1: direction1,
                                   direction2: direction2,
-                                  active: active,
-                                  days: nil))
-                    }
-                }
-            } catch {
-                print("failed: \(error.localizedDescription)")
+                                  active: active == "Active",
+                                  days: nil)
+                routes.append(route)
             }
+        } catch {
+            print("failed: \(error.localizedDescription)")
         }
         
-        // Close the connection
-        DDOTRoutesDatabase.close()
+        database.close()
         
         return routes
     }
@@ -110,46 +102,87 @@ class DatabaseManager: NSObject {
         
         var routes = [Route]()
         
-        // Open the connection, return if there is an issue
-        guard smartRoutesDatabase.open() else {
-            print("Unable to open SmartRoutesDatabase")
+        guard database.open() else {
+            print("Unable to open database")
             return routes
         }
         
-        // Load all the rows as route objects and return them
-        if smartRoutesDatabase != nil {
-            do {
-                let rs = try smartRoutesDatabase.executeQuery("select * from 'route' where Company='SmartBus'", values: nil)
-                while rs.next() {
-                    if let company = rs.string(forColumn: "Company"),
-                        let routeID = rs.string(forColumn: "rtid"),
-                        let number = rs.string(forColumn: "rtid"),
-                        let name = rs.string(forColumn: "rtnm"),
-                        let direction1 = rs.string(forColumn: "direction1"),
-                        let direction2 = rs.string(forColumn: "direction2"),
-                        let active = rs.string(forColumn: "routeActive"),
-                        let days = rs.string(forColumn: "Days")
-                    {
-                        routes.append(
-                            Route(company: company,
+        do {
+            let rs = try database.executeQuery("select * from 'Smart Bus Routes' where Company='SmartBus'", values: nil)
+            while rs.next() {
+                
+                let company = rs.string(forColumn: "Company")
+                let routeID = rs.string(forColumn: "rtid")
+                let number = rs.string(forColumn: "rtid")
+                let name = rs.string(forColumn: "rtnm")
+                let direction1 = rs.string(forColumn: "direction1")
+                let direction2 = rs.string(forColumn: "direction2")
+                let active = rs.string(forColumn: "routeActive")
+                let days = rs.string(forColumn: "Days")
+                    
+                let normalizedName = name?.lowercased().capitalized.replacingOccurrences(of: (routeID?.appending(" - "))!, with: "")
+                let daysArray = days?.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")
+                
+                let route = Route(company: company,
                                   routeID: routeID,
                                   number: number,
-                                  name: name.lowercased().capitalized,
+                                  name: normalizedName,
                                   direction1: direction1,
                                   direction2: direction2,
-                                  active: active,
-                                  days: days.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")))
-                    }
-                }
-            } catch {
-                print("failed: \(error.localizedDescription)")
+                                  active: active == "Active",
+                                  days: daysArray)
+                routes.append(route)
             }
+        } catch {
+            print("failed: \(error.localizedDescription)")
         }
         
-        // Close the connection
-        smartRoutesDatabase.close()
+        database.close()
         
         return routes
+    }
+    
+    func getDDOTStopsFor(route: Route) -> [Stop] {
+        
+        var stops = [Stop]()
+        
+        guard database.open() else {
+            print("Unable to open database")
+            return stops
+        }
+        
+        guard let routeID = route.routeID else {
+            print("Route not valid")
+            return stops
+        }
+        
+        do {
+            let rs = try database.executeQuery("select * from 'DDOT Stops' where Company='DDOT' and rt='\(routeID)'", values: nil)
+            while rs.next() {
+                let name = rs.string(forColumn: "stpnm")
+                let number = rs.string(forColumn: "stnum")
+                let direction = rs.string(forColumn: "dir")
+                let latitude = rs.double(forColumn: "lat")
+                let longitude = rs.double(forColumn: "long")
+                let active = rs.string(forColumn: "stopActive")
+                
+                let normalizedName = name?.lowercased().capitalized //TODO: Not sure if I should normalize these properties here
+                
+                let stop = Stop(name: normalizedName,
+                                number: number,
+                                direction: direction,
+                                latitude: latitude,
+                                longitude: longitude,
+                                active: active == "Active")
+                stops.append(stop)
+            }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        database.close()
+        
+        return stops
     }
     
 }

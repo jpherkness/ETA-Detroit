@@ -52,6 +52,7 @@ class RoutesController: UITableViewController {
     
     func prepare() {
         tableView.register(RouteCell.self, forCellReuseIdentifier: "RouteCell")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
 }
@@ -72,6 +73,9 @@ extension RoutesController {
         return routes.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 
@@ -79,7 +83,10 @@ extension RoutesController {
 
 extension RoutesController {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let route = routes[indexPath.row]
+        navigationController?.pushViewController(StopsController(route: route, style: .plain), animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {}
     

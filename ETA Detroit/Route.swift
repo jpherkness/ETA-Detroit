@@ -38,16 +38,16 @@ class Route {
     var name: String?
     var direction1: String?
     var direction2: String?
-    var active: String?
+    var active: Bool?
     var days: Array<String>?
     
-    init(company: String?, routeID: String?, number: String?, name: String?, direction1: String?, direction2: String?, active: String?, days: Array<String>?) {
+    init(company: String?, routeID: String?, number: String?, name: String?, direction1: String?, direction2: String?, active: Bool?, days: Array<String>?) {
         self.company = company
         self.routeID = routeID
         self.number = number
         self.name = name
-        self.direction1 = direction1
-        self.direction2 = direction2
+        self.direction1 = direction1?.lowercased()
+        self.direction2 = direction2?.lowercased()
         self.active = active
         self.days = days
     }
