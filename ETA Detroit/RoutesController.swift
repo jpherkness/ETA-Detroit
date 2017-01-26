@@ -93,6 +93,7 @@ extension RoutesController {
         didSelect(route: routes[indexPath.row])
         let route = routes[indexPath.row]
         navigationController?.pushViewController(StopsController(route: route), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

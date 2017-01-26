@@ -724,6 +724,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q96936RRXW;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -739,6 +740,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q96936RRXW;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -34,12 +34,9 @@ class StopsController: UITableViewController {
     // MARK: Public
     
     let kHeaderHeight: CGFloat = 300.0
-    var mapView: MKMapView = {
+    lazy var mapView: MKMapView = {
         var mapView = MKMapView()
-        var loc = mapView.centerCoordinate
-        loc.latitude = 42.3314
-        loc.longitude = -83.0458
-        mapView.region = MKCoordinateRegionMakeWithDistance(loc, 2000, 2000)
+        mapView.delegate = self
         return mapView
     }()
     var navigationBarFooter = UIView()
@@ -57,12 +54,19 @@ class StopsController: UITableViewController {
         super.init(style: .plain)
         
         self.route = route
+        
+        
         stops = DatabaseManager.shared.getStopsFor(route: route)
         filterStops(direction: route.direction1!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        drawRoute()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,6 +79,8 @@ class StopsController: UITableViewController {
     private func setupViews() {
         
         title = route.name
+        
+        mapView.delegate = self
         
         tableView.contentInset = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kHeaderHeight)
@@ -107,6 +113,65 @@ class StopsController: UITableViewController {
         filteredStops = stops.filter{ return $0.direction == direction }
         tableView.reloadData()
     }
+    
+    func drawRoute(){
+        let sortedStops = stops
+        
+        // Add annotations
+        var annotations = [MKPointAnnotation]()
+        for stop in sortedStops {
+            let location = CLLocationCoordinate2D(latitude: stop.latitude!, longitude: stop.longitude!)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = stop.name!
+            annotations.append(annotation)
+        }
+        
+        let startLocation = CLLocationCoordinate2D(latitude: sortedStops.first!.latitude!, longitude: sortedStops.first!.longitude!)
+        let endLocation = CLLocationCoordinate2D(latitude: sortedStops.last!.latitude!, longitude: sortedStops.last!.longitude!)
+        
+        let startPlacemark = MKPlacemark(coordinate: startLocation, addressDictionary: nil)
+        let endPlacemark = MKPlacemark(coordinate: endLocation, addressDictionary: nil)
+        
+        let startMapItem = MKMapItem(placemark: startPlacemark)
+        let endMapItem = MKMapItem(placemark: endPlacemark)
+        
+        let startAnnotation = MKPointAnnotation()
+        startAnnotation.coordinate = startLocation
+        startAnnotation.title = "Start"
+        let endAnnotation = MKPointAnnotation()
+        endAnnotation.coordinate = endLocation
+        endAnnotation.title = "End"
+        
+        
+        // Calculate the route
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = startMapItem
+        directionRequest.destination = endMapItem
+        directionRequest.transportType = .automobile
+        
+        // Calculate the direction
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate { (response, error) in
+            // Validation
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                return
+            }
+            
+            // Draw the route
+            let route = response.routes[0]
+            self.mapView.add(route.polyline, level: .aboveRoads)
+            
+            let rect = route.polyline.boundingMapRect
+            
+            self.mapView.showAnnotations(annotations, animated: false )
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: false)
+        }
+    }
 }
 
 
@@ -116,7 +181,7 @@ extension StopsController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text = filteredStops[indexPath.row].name
+        cell.textLabel?.text = filteredStops[indexPath.row].name! + " " + filteredStops[indexPath.row].number!
         return cell
     }
     
@@ -134,7 +199,9 @@ extension StopsController {
 
 extension StopsController {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 
@@ -160,19 +227,28 @@ extension StopsController {
 }
 
 
+// MARK: - MKMapViewDelegate
+
+extension StopsController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .red
+        renderer.lineWidth = 4.0
+        
+        return renderer
+    }
+}
+
 // MARK: - UISegmentControll Target
 
 extension StopsController {
     
     func directionChanged(segmentedControl: UISegmentedControl){
         
-        // TODO: Update the stops based on this selected direction
         if segmentedControl.selectedSegmentIndex == 0 {
             filterStops(direction: route.direction1!)
-            print("Direction changed to:", route.direction1!)
         } else {
             filterStops(direction: route.direction2!)
-            print("Direction changed to:", route.direction2!)
         }
     }
     

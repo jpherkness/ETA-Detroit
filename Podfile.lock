@@ -2,16 +2,23 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
   - SnapKit (3.1.2)
 
 DEPENDENCIES:
   - FMDB
+  - GoogleMaps
   - SnapKit (~> 3.1.2)
 
 SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
 
-PODFILE CHECKSUM: 60e958108710d210ae48c61faee25036f982afd3
+PODFILE CHECKSUM: 15332eb13595d2a7a8a11c488dfc36d044edfd5d
 
 COCOAPODS: 1.1.1

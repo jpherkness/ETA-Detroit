@@ -8,6 +8,7 @@ target 'ETA Detroit' do
   # Pods for ETA Detroit
   pod 'SnapKit', '~> 3.1.2'
   pod 'FMDB'
+  pod 'GoogleMaps'
 
   target 'ETA DetroitTests' do
     inherit! :search_paths
