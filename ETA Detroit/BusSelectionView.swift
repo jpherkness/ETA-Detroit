@@ -25,41 +25,41 @@
 import UIKit
 
 
-// MARK: - BusCompanyView
+// MARK: - BusSelectionView
 
-class BusCompanyView: UIView {
+class BusSelectionView: UIView {
     
     
     // MARK: Private
     
-    private var busImageView: UIImageView = {
+    private var imageView: UIImageView = {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
     
-    private var busNameLabel: UILabel = {
+    private var textLabel: UILabel = {
         var label = UILabel()
         label.textAlignment = .center
-        label.backgroundColor = UIColor.gray
-        label.textColor = UIColor.white
+        label.backgroundColor = UIColor(white: 0, alpha: 0.0)
+        label.textColor = .white
         return label
     }()
-    
-    private var cover = UIView()
     
     
     // MARK: UIViewController
     
+    convenience init(image: UIImage, text: String, brandColor: UIColor) {
+        self.init()
+        textLabel.text = text
+        textLabel.backgroundColor = brandColor
+        imageView.image = image
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        addSubview(busImageView)
-        addSubview(cover)
-        addSubview(busNameLabel)
-        cover.layer.opacity = 0.3
-        
+        setupViews()
         setNeedsUpdateConstraints()
     }
     
@@ -68,29 +68,22 @@ class BusCompanyView: UIView {
     }
     
     override func updateConstraints() {
-        busImageView.snp.makeConstraints { make in
-            make.top.right.left.equalTo(self)
-            make.bottom.equalTo(self.snp.bottom)
+        
+        imageView.snp.makeConstraints { make in
+            make.top.left.right.equalTo(self)
+            make.bottom.equalTo(textLabel.snp.top)
         }
         
-        busNameLabel.snp.makeConstraints { make in
-            make.height.equalTo(40)
-            make.right.left.bottom.equalTo(self).inset(UIEdgeInsets.zero)
+        textLabel.snp.makeConstraints { make in
+            make.left.right.bottom.equalTo(self)
+            make.height.equalTo(50)
         }
         
-        cover.snp.makeConstraints {make in
-            make.edges.equalTo(busImageView)
-        }
         super.updateConstraints()
     }
     
-    
-    // MARK: Public
-    
-    func configure(image: UIImage, text: String, brandColor: UIColor) {
-        busNameLabel.text = text
-        busImageView.image = image
-        busNameLabel.backgroundColor = brandColor
-        cover.backgroundColor = brandColor
+    func setupViews() {
+        addSubview(imageView)
+        addSubview(textLabel)
     }
 }

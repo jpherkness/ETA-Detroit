@@ -27,52 +27,46 @@ import UIKit
 import SnapKit
 
 
-// MARK: - ViewController
+// MARK: - HomeController
 
-class ViewController: UIViewController {
+class HomeController: UIViewController {
     
     
     // MARK: Private
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
     
     private let button: UIButton = {
         var button = UIButton()
         button.setTitle("PLAN MY ROUTE", for: .normal)
-        button.backgroundColor = Color.primary
+        button.backgroundColor = .etadTintColor()
         button.addTarget(self, action: #selector(selectedPlanMyRoute), for: .touchUpInside)
         return button
     }()
     
-    private lazy var smartBusCompanyView: BusCompanyView = {
-        let busCompanyView = BusCompanyView()
-        busCompanyView.configure(image: UIImage(named: "Smart-Bus.png")!,
-                                 text: "VIEW SMART SCHEDULE",
-                                 brandColor: Color.smartBrandColor)
+    private lazy var smartBusCompanyView: BusSelectionView = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectedSmart))
-        busCompanyView.addGestureRecognizer(tap)
-        return busCompanyView
+        let busSelectionView = BusSelectionView(image: #imageLiteral(resourceName: "smart-bus"), text: "VIEW SMART SCHEDULE", brandColor: UIColor.etadSmartBrandColor())
+        busSelectionView.addGestureRecognizer(tap)
+        return busSelectionView
     }()
     
-    private lazy var ddotBusCompanyView: BusCompanyView = {
-        let busCompanyView = BusCompanyView()
-        busCompanyView.configure(image: UIImage(named: "ddot-Bus.png")!,
-                                 text: "VIEW DDOT SCHEDULE",
-                                 brandColor: Color.ddotBrandColor)
+    private lazy var ddotBusCompanyView: BusSelectionView = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectedDDOT))
-        busCompanyView.addGestureRecognizer(tap)
-        return busCompanyView
+        let busSelectionView = BusSelectionView(image: #imageLiteral(resourceName: "ddot-bus"), text: "VIEW DDOT SCHEDULE", brandColor: UIColor.etadDdotBrandColor())
+        busSelectionView.addGestureRecognizer(tap)
+        return busSelectionView
     }()
     
-    private lazy var reflexBusCompanyView: BusCompanyView = {
-        let busCompanyView = BusCompanyView()
-        busCompanyView.configure(image: UIImage(named: "Reflex-Bus.png")!,
-                                 text: "VIEW REFLEX SCHEDULE",
-                                 brandColor: Color.reflexBrandColor)
+    private lazy var reflexBusCompanyView: BusSelectionView = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectedReflex))
-        busCompanyView.addGestureRecognizer(tap)
-        return busCompanyView
+        let busSelectionView = BusSelectionView(image: #imageLiteral(resourceName: "reflex-bus"), text: "VIEW REFLEX SCHEDULE", brandColor: UIColor.etadReflexBrandColor())
+        busSelectionView.addGestureRecognizer(tap)
+        return busSelectionView
     }()
     
     
@@ -80,8 +74,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepare()
+        setupViews()
         view.setNeedsUpdateConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.barTintColor = UIColor.etadTintColor()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func updateViewConstraints() {
@@ -91,31 +98,31 @@ class ViewController: UIViewController {
         }
 
         button.snp.makeConstraints { make in
-            make.top.equalTo(20)
-            make.width.equalTo(scrollView).inset(20)
+            make.top.equalTo(10)
+            make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.height.equalTo(40)
         }
         
         smartBusCompanyView.snp.makeConstraints { make in
-            make.top.equalTo(button.snp.bottom).offset(20)
-            make.width.equalTo(scrollView).inset(20)
+            make.top.equalTo(button.snp.bottom).offset(10)
+            make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.height.equalTo(160)
         }
         
         ddotBusCompanyView.snp.makeConstraints { make in
-            make.top.equalTo(smartBusCompanyView.snp.bottom).offset(5)
-            make.width.equalTo(scrollView).inset(20)
+            make.top.equalTo(smartBusCompanyView.snp.bottom).offset(10)
+            make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.height.equalTo(160)
         }
         
         reflexBusCompanyView.snp.makeConstraints { make in
-            make.top.equalTo(ddotBusCompanyView.snp.bottom).offset(5)
-            make.width.equalTo(scrollView).inset(20)
+            make.top.equalTo(ddotBusCompanyView.snp.bottom).offset(10)
+            make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
-            make.bottom.equalTo(-20)
+            make.bottom.equalTo(-10)
             make.height.equalTo(160)
         }
         
@@ -125,12 +132,9 @@ class ViewController: UIViewController {
     
     // MARK: Public
     
-    func prepare() {
-        view.backgroundColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = Color.primary
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    func setupViews() {
         title = "ETA Detroit"
-        scrollView.alwaysBounceVertical = true
+        view.backgroundColor = .white
         scrollView.addSubview(button)
         scrollView.addSubview(smartBusCompanyView)
         scrollView.addSubview(ddotBusCompanyView)
@@ -139,19 +143,23 @@ class ViewController: UIViewController {
     }
     
     
-    // MARK: Internal
+    // MARK: Selectors
     
-    private dynamic func selectedPlanMyRoute() {}
+    private dynamic func selectedPlanMyRoute() {
+        navigationController?.pushViewController(UIViewController(), animated: true)
+    }
     
     private dynamic func selectedSmart() {
         navigationController?.pushViewController(SmartRoutesController(), animated: true)
     }
     
     private dynamic func selectedDDOT() {
-        navigationController?.pushViewController(DDOTRoutesController(), animated: true)
+        navigationController?.pushViewController(DdotRoutesController(), animated: true)
     }
     
-    private dynamic func selectedReflex() {}
+    private dynamic func selectedReflex() {
+        navigationController?.pushViewController(ReflexRoutesController(), animated: true)
+    }
     
 }
 

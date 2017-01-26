@@ -24,31 +24,29 @@
 
 import UIKit
 
-import SnapKit
 
+// MARK: - UIColor+ETADetroit
 
-// MARK: - DDOTRoutesController
-
-class DDOTRoutesController: RoutesController {
+extension UIColor {
     
-    
-    // MARK: RoutesController
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    class func etadTintColor() -> UIColor {
+        return UIColor(red:0.15, green:0.60, blue:0.46, alpha:1.00)
     }
     
-    override func prepare() {
-        super.prepare()
-        
-        title = "DDOT Bus Routes"
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = Color.primary
+    class func etadRouteNumberLabelColor() -> UIColor {
+        return UIColor(red:0.44, green:0.71, blue:0.95, alpha:1.00)
     }
     
-    override func loadRoutes() {
-        super.loadRoutes()
-        routes = DatabaseManager.shared.getDDOTRoutes()
+    class func etadSmartBrandColor() -> UIColor {
+        return UIColor(red:0.74, green:0.05, blue:0.16, alpha:1.00)
+    }
+    
+    class func etadDdotBrandColor() -> UIColor {
+        return UIColor(red:0.02, green:0.28, blue:0.22, alpha:1.00)
+    }
+    
+    class func etadReflexBrandColor() -> UIColor {
+        return UIColor(red:0.29, green:0.55, blue:0.77, alpha:1.00)
     }
     
 }

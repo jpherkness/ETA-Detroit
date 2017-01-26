@@ -32,21 +32,24 @@ class SmartRoutesController: RoutesController {
     
     // MARK: RoutesController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func prepare() {
-        super.prepare()
+    override func viewWillAppear(_ animated: Bool) {
         
-        title = "Smart Bus Routes"
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = Color.primary
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        navigationController.navigationBar.tintColor = UIColor.white
+        navigationController.navigationBar.barTintColor = UIColor.etadSmartBrandColor()
+        
     }
     
-    override func loadRoutes() {
-        super.loadRoutes()
-        routes = DatabaseManager.shared.getSmartRoutes()
+    override func setupViews() {
+        super.setupViews()
+        title = "Smart Bus Routes"
     }
 
+    override func getRoutes() -> [Route] {
+        return DatabaseManager.shared.getSmartRoutes()
+    }
+    
 }

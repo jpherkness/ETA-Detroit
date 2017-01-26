@@ -34,27 +34,31 @@ class RoutesController: UITableViewController {
     
     // MARK: Public
     
-    var routes = [Route]()
+    var routes: [Route] = [Route]()
     
     
     // MARK: UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepare()
-        loadRoutes()
+        routes = getRoutes()
+        setupViews()
     }
     
     
     // MARK: Public
     
-    func loadRoutes() {}
-    
-    func prepare() {
+    func setupViews() {
         tableView.register(RouteCell.self, forCellReuseIdentifier: "RouteCell")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
+    func getRoutes() -> [Route] {
+        return [Route]()
+    }
+    
+    func didSelect(route: Route) { }
+
 }
 
 
@@ -65,7 +69,9 @@ extension RoutesController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
         cell.accessoryType = .disclosureIndicator
-        cell.configureCell(route: routes[indexPath.row])
+        cell.configureWith(route: routes[indexPath.row])
+        cell.routeLabel.textColor = navigationController?.navigationBar.barTintColor
+        cell.routeNumberLabel.textColor = navigationController?.navigationBar.barTintColor
         return cell
     }
     
@@ -84,10 +90,9 @@ extension RoutesController {
 extension RoutesController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelect(route: routes[indexPath.row])
         let route = routes[indexPath.row]
-        navigationController?.pushViewController(StopsController(route: route, style: .plain), animated: true)
+        navigationController?.pushViewController(StopsController(route: route), animated: true)
     }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {}
     
 }

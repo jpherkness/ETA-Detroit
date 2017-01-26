@@ -32,18 +32,23 @@ class ReflexRoutesController: RoutesController {
     
     // MARK: RoutesController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        navigationController.navigationBar.tintColor = UIColor.white
+        navigationController.navigationBar.barTintColor = UIColor.etadReflexBrandColor()
+        
     }
     
-    override func prepare() {
-        super.prepare()
-        
+    override func setupViews() {
+        super.setupViews()
         title = "Reflex Bus Routes"
     }
     
-    override func loadRoutes() {
-        super.loadRoutes()
+    override func getRoutes() -> [Route] {
+        return DatabaseManager.shared.getReflexRoutes()
     }
-    
 }

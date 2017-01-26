@@ -24,19 +24,34 @@
 
 import UIKit
 
-struct Color {
+import SnapKit
+
+
+// MARK: - DdotRoutesController
+
+class DdotRoutesController: RoutesController {
     
     
-    // MARK: Application Colors
+    // MARK: RoutesController
     
-    static let primary = UIColor(red:0.19, green:0.24, blue:0.27, alpha:1.00)
-    static let routeLabelColor = UIColor(red:0.44, green:0.71, blue:0.95, alpha:1.00)
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let navigationController = navigationController else {
+            return
+        }
+        
+        navigationController.navigationBar.tintColor = UIColor.white
+        navigationController.navigationBar.barTintColor = UIColor.etadDdotBrandColor()
+        
+    }
     
+    override func setupViews() {
+        super.setupViews()
+        title = "DDOT Bus Routes"
+    }
     
-    // MARK: Brand Colors
-    
-    static let ddotBrandColor = UIColor(red:0.02, green:0.28, blue:0.22, alpha:1.00)
-    static let smartBrandColor = UIColor(red:0.74, green:0.05, blue:0.16, alpha:1.00)
-    static let reflexBrandColor = UIColor(red:0.29, green:0.55, blue:0.77, alpha:1.00)
-    
+    override func getRoutes() -> [Route] {
+        return DatabaseManager.shared.getDDOTRoutes()
+    }
+
 }

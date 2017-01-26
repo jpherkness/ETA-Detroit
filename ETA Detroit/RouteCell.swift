@@ -32,19 +32,19 @@ class RouteCell: UITableViewCell {
     
     // MARK: Private
     
-    private let routeLabel: UILabel = {
+    public let routeLabel: UILabel = {
         var label = UILabel()
         label.text = "ROUTE"
-        label.textColor = Color.routeLabelColor
+        label.textColor = UIColor.etadRouteNumberLabelColor()
         label.adjustsFontSizeToFitWidth = true
         label.font = label.font.withSize(12)
         label.textAlignment = .center
         return label
     }()
     
-    private let routeNumberLabel: UILabel = {
+    public let routeNumberLabel: UILabel = {
         var label = UILabel()
-        label.textColor = Color.routeLabelColor
+        label.textColor = UIColor.etadRouteNumberLabelColor()
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textAlignment = NSTextAlignment.center
         return label
@@ -62,12 +62,11 @@ class RouteCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        prepareCell()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        prepareCell()
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func updateConstraints() {
@@ -97,22 +96,31 @@ class RouteCell: UITableViewCell {
     }
     
     
-    // MARK: Public
+    // MARK: Private
     
-    func prepareCell() {
+    private func setupViews() {
         leftBox.addSubview(routeLabel)
         leftBox.addSubview(routeNumberLabel)
         addSubview(leftBox)
         addSubview(routeNameLabel)
-        
         setNeedsUpdateConstraints()
     }
     
-    func configureCell(route: Route) {
-        guard let name = route.name, let number = route.number else {
+    
+    // MARK: Public
+    
+    func configureWith(route: Route) {
+        
+        guard let name = route.name else {
             return
         }
+        
         routeNameLabel.text = name
+        
+        guard let number = route.number else {
+            return
+        }
+        
         routeNumberLabel.text = number
         
     }

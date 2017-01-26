@@ -51,133 +51,107 @@ class DatabaseManager: NSObject {
     
     func initalizeDatabases() {
         
-        let DDOTRoutesDatabaseSourcePath = Bundle.main.path(forResource: "ETADetroit", ofType: "db")
+        let DDOTRoutesDatabaseSourcePath = Bundle.main.path(forResource: "ETADetroitSchedule", ofType: "db")
         database = FMDatabase(path: DDOTRoutesDatabaseSourcePath)
     
     }
     
     func getDDOTRoutes() -> [Route] {
-        
-        var routes = [Route]()
-        
-        guard database.open() else {
-            print("Unable to open database")
-            return routes
-        }
-        
-        do {
-            let rs = try database.executeQuery("select * from 'DDOT Routes' where Company='DDOT'", values: nil)
-            while rs.next() {
-                
-                let company = rs.string(forColumn: "Company")
-                let routeID = rs.string(forColumn: "rt")
-                let number = rs.string(forColumn: "rtnum")
-                let name = rs.string(forColumn: "rtnm")
-                let direction1 = rs.string(forColumn: "direction1")
-                let direction2 = rs.string(forColumn: "direction2")
-                let active = rs.string(forColumn: "routeActive")
-                
-                let normalizedString = name?.lowercased().capitalized
-                
-                let route = Route(company: company,
-                                  routeID: routeID,
-                                  number: number,
-                                  name: normalizedString,
-                                  direction1: direction1,
-                                  direction2: direction2,
-                                  active: active == "Active",
-                                  days: nil)
-                routes.append(route)
-            }
-        } catch {
-            print("failed: \(error.localizedDescription)")
-        }
-        
-        database.close()
-        
-        return routes
+        return getRoutesFor(company: "DDOT")
     }
     
     func getSmartRoutes() -> [Route] {
+        return getRoutesFor(company: "SmartBus")
+    }
+    
+    func getReflexRoutes() -> [Route] {
+        return getRoutesFor(company: "RefleX")
+    }
+    
+    func getRoutesFor(company: String) -> [Route] {
         
         var routes = [Route]()
         
         guard database.open() else {
-            print("Unable to open database")
+            print("Error: Database could not be opened")
             return routes
         }
         
-        do {
-            let rs = try database.executeQuery("select * from 'Smart Bus Routes' where Company='SmartBus'", values: nil)
-            while rs.next() {
+        guard let rs = database.executeQuery("select * from 'Routes' where company='\(company)'", withArgumentsIn: nil) else {
+            print("Error: Could not find any routes for company: \(company)")
+            return routes
+        }
+        
+        while rs.next() {
+            
+            let company = rs.string(forColumn: "company")
+            let routeID = rs.string(forColumn: "route_id")
+            let number = rs.string(forColumn: "route_number")
+            let name = rs.string(forColumn: "route_name")
+            let direction1 = rs.string(forColumn: "direction1")
+            let direction2 = rs.string(forColumn: "direction2")
+            let active = rs.string(forColumn: "route_active")
+            let days = rs.string(forColumn: "days_active")
+            
+            // TODO: Not sure if we should normalize the values here.
+            var normalizedName = name?.lowercased().capitalized
+            normalizedName = normalizedName?.replacingOccurrences(of: (routeID?.appending(" - "))!, with: "")
+            let daysArray = days?.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")
                 
-                let company = rs.string(forColumn: "Company")
-                let routeID = rs.string(forColumn: "rtid")
-                let number = rs.string(forColumn: "rtid")
-                let name = rs.string(forColumn: "rtnm")
-                let direction1 = rs.string(forColumn: "direction1")
-                let direction2 = rs.string(forColumn: "direction2")
-                let active = rs.string(forColumn: "routeActive")
-                let days = rs.string(forColumn: "Days")
-                    
-                let normalizedName = name?.lowercased().capitalized.replacingOccurrences(of: (routeID?.appending(" - "))!, with: "")
-                let daysArray = days?.replacingOccurrences(of: " ", with: "").components(separatedBy: ",")
-                
-                let route = Route(company: company,
-                                  routeID: routeID,
-                                  number: number,
-                                  name: normalizedName,
-                                  direction1: direction1,
-                                  direction2: direction2,
-                                  active: active == "Active",
-                                  days: daysArray)
-                routes.append(route)
-            }
-        } catch {
-            print("failed: \(error.localizedDescription)")
+            let route = Route(company: company,
+                              routeID: routeID,
+                              number: number,
+                              name: normalizedName,
+                              direction1: direction1,
+                              direction2: direction2,
+                              active: active == "Active",
+                              days: daysArray)
+            routes.append(route)
         }
         
         database.close()
         
         return routes
     }
-    
-    func getDDOTStopsFor(route: Route) -> [Stop] {
+
+    func getStopsFor(route: Route) -> [Stop] {
         
         var stops = [Stop]()
         
-        guard database.open() else {
-            print("Unable to open database")
-            return stops
-        }
-        
         guard let routeID = route.routeID else {
-            print("Route not valid")
+            print("Error: Invalid route")
             return stops
         }
         
-        do {
-            let rs = try database.executeQuery("select * from 'DDOT Stops' where Company='DDOT' and rt='\(routeID)'", values: nil)
-            while rs.next() {
-                let name = rs.string(forColumn: "stpnm")
-                let number = rs.string(forColumn: "stnum")
-                let direction = rs.string(forColumn: "dir")
-                let latitude = rs.double(forColumn: "lat")
-                let longitude = rs.double(forColumn: "long")
-                let active = rs.string(forColumn: "stopActive")
-                
-                let normalizedName = name?.lowercased().capitalized //TODO: Not sure if I should normalize these properties here
-                
-                let stop = Stop(name: normalizedName,
+        guard database.open() else {
+            print("Error: Database could not be opened")
+            return stops
+        }
+        
+        guard let rs = database.executeQuery("select * from 'Stops' where route_id='\(routeID)'", withArgumentsIn: nil) else {
+            print("Error: Could not find any stops \(route.routeID)")
+            return stops
+        }
+        
+        while rs.next() {
+            let name = rs.string(forColumn: "stop_name")
+            let number = rs.string(forColumn: "stop_number")
+            let direction = rs.string(forColumn: "direction")
+            let latitude = rs.double(forColumn: "latitude")
+            let longitude = rs.double(forColumn: "longitude")
+            let active = rs.string(forColumn: "stop_active")
+            
+            // TODO: Not sure if we should normalize the values here.
+            var normalizedName = name?.lowercased().capitalized
+            normalizedName = normalizedName?.replacingOccurrences(of: "+", with: "&")
+            
+            let stop = Stop(name: normalizedName,
                                 number: number,
                                 direction: direction,
                                 latitude: latitude,
                                 longitude: longitude,
                                 active: active == "Active")
-                stops.append(stop)
-            }
-        } catch {
-            print("failed: \(error.localizedDescription)")
+            stops.append(stop)
         }
         
         database.close()

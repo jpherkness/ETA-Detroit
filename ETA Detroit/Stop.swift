@@ -27,10 +27,7 @@ import Foundation
 
 // MARK: - Stop
 
-class Stop: NSObject {
-    
-    
-    // MARK: Public
+struct Stop {
     
     var name: String?
     var number: String?
@@ -39,11 +36,4 @@ class Stop: NSObject {
     var longitude: Double?
     var active: Bool?
     
-    init(name: String?, number: String?, direction: String?, latitude: Double?, longitude: Double?, active: Bool?) {
-        self.name = name
-        self.number = number
-        self.direction = direction
-        self.latitude = latitude
-        self.longitude = longitude
-    }
 }
