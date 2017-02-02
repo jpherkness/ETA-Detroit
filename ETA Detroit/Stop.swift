@@ -29,11 +29,11 @@ import Foundation
 
 struct Stop {
     
+    var routeID: String?
+    var stopId: String?
     var name: String?
-    var number: String?
+    var order: String?
     var direction: String?
-    var latitude: Double?
-    var longitude: Double?
-    var active: Bool?
+    var day: String?
     
 }

@@ -104,22 +104,22 @@ class HomeController: UIViewController {
             make.height.equalTo(40)
         }
         
-        smartBusCompanyView.snp.makeConstraints { make in
+        ddotBusCompanyView.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(10)
             make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.height.equalTo(160)
         }
         
-        ddotBusCompanyView.snp.makeConstraints { make in
-            make.top.equalTo(smartBusCompanyView.snp.bottom).offset(10)
+        smartBusCompanyView.snp.makeConstraints { make in
+            make.top.equalTo(ddotBusCompanyView.snp.bottom).offset(10)
             make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.height.equalTo(160)
         }
         
         reflexBusCompanyView.snp.makeConstraints { make in
-            make.top.equalTo(ddotBusCompanyView.snp.bottom).offset(10)
+            make.top.equalTo(smartBusCompanyView.snp.bottom).offset(10)
             make.width.equalTo(scrollView).inset(10)
             make.centerX.equalTo(scrollView.snp.centerX)
             make.bottom.equalTo(-10)

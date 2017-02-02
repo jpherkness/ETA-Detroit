@@ -23,7 +23,7 @@
  */
 
 import UIKit
-import MapKit
+import GoogleMaps
 
 
 // MARK: - UITableViewController
@@ -34,13 +34,13 @@ class StopsController: UITableViewController {
     // MARK: Public
     
     let kHeaderHeight: CGFloat = 300.0
-    lazy var mapView: MKMapView = {
-        var mapView = MKMapView()
-        mapView.delegate = self
-        return mapView
-    }()
-    var navigationBarFooter = UIView()
+    var mapView = GMSMapView()
+    var menuView = UIView()
+    var daySegmentControl = UISegmentedControl()
+    
+    var directionMenuView = UIView()
     var directionSegmentControl = UISegmentedControl()
+
     
     // MARK: Private
     
@@ -48,25 +48,21 @@ class StopsController: UITableViewController {
     public var stops = [Stop]()
     public var filteredStops = [Stop]()
     
+    public var locations = [StopLocation]()
+    public var filteredLocations = [StopLocation]()
+    
+    public var selectedDay: String?
+    public var selectedDirection: String?
+    
     // MARK: UIViewController
     
     init(route: Route) {
         super.init(style: .plain)
-        
-        self.route = route
-        
-        
-        stops = DatabaseManager.shared.getStopsFor(route: route)
-        filterStops(direction: route.direction1!)
+        setRoute(route: route)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupViews()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-
-        drawRoute()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,99 +76,113 @@ class StopsController: UITableViewController {
         
         title = route.name
         
-        mapView.delegate = self
+        if shouldDisplayMenuBar() {
+            
+            guard let days = route.days else {
+                return
+            }
+            
+            menuView.backgroundColor = navigationController?.navigationBar.barTintColor
+            
+            daySegmentControl = UISegmentedControl(items: days)
+            daySegmentControl.selectedSegmentIndex = 0
+            daySegmentControl.tintColor = .white
+            daySegmentControl.addTarget(self, action: #selector(dayChanged(segmentedControl:)), for: .valueChanged)
+            menuView.addSubview(daySegmentControl)
+            view.addSubview(menuView)
+        }
+        
+        if let direction1 = route.direction1, let direction2 = route.direction2 {
+            directionSegmentControl = UISegmentedControl(items: [direction1, direction2])
+            directionSegmentControl.tintColor = navigationController?.navigationBar.barTintColor
+            directionSegmentControl.selectedSegmentIndex = 0
+            directionSegmentControl.addTarget(self, action: #selector(directionChanged(segmentedControl:)), for: .valueChanged)
+        }
+        directionMenuView.addSubview(directionSegmentControl)
+        directionMenuView.backgroundColor = .white
         
         tableView.contentInset = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kHeaderHeight)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
-        
-        navigationBarFooter.backgroundColor = navigationController?.navigationBar.barTintColor
-        
-        let directions = [route.direction1!.lowercased().capitalized, route.direction2!.lowercased().capitalized]
-        directionSegmentControl = UISegmentedControl(items: directions)
-        directionSegmentControl.selectedSegmentIndex = 0
-        directionSegmentControl.tintColor = .white
-        directionSegmentControl.addTarget(self, action: #selector(directionChanged(segmentedControl:)), for: .valueChanged)
+        tableView.separatorInset = .zero
         
         view.insertSubview(mapView, at: 0)
-        navigationBarFooter.addSubview(directionSegmentControl)
-        view.addSubview(navigationBarFooter)
-        
+        view.addSubview(directionMenuView)
         view.setNeedsUpdateConstraints()
     }
     
     override func updateViewConstraints() {
-        directionSegmentControl.snp.makeConstraints { make in
-            make.edges.equalTo(navigationBarFooter).inset(10)
+        if shouldDisplayMenuBar() {
+            daySegmentControl.snp.makeConstraints { make in
+                make.edges.equalTo(menuView).inset(10)
+            }
         }
         
+        directionSegmentControl.snp.makeConstraints { make in
+            make.edges.equalTo(directionMenuView).inset(10)
+        }
         super.updateViewConstraints()
     }
     
-    func filterStops(direction: String){
-        filteredStops = stops.filter{ return $0.direction == direction }
+    func filterStops(){
+        
+        // Start with a non filtered array
+        filteredStops = stops
+        
+        // If the day is not null, filter the stops by day
+        if let selectedDay = selectedDay {
+            filteredStops = filteredStops.filter { $0.day! == selectedDay }
+        }
+        
+        // If the direction is not null, filter the stops by direction
+        if let selectedDirection = selectedDirection {
+            filteredStops = filteredStops.filter { $0.direction! == selectedDirection }
+        }
+        
+        // Reload the tableView
         tableView.reloadData()
     }
     
-    func drawRoute(){
-        let sortedStops = stops
+    func filterLocations(){
         
-        // Add annotations
-        var annotations = [MKPointAnnotation]()
-        for stop in sortedStops {
-            let location = CLLocationCoordinate2D(latitude: stop.latitude!, longitude: stop.longitude!)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = stop.name!
-            annotations.append(annotation)
+        // Start with a non filtered array
+        filteredLocations = locations
+        
+        // If the direction is not null, filter the stops by direction
+        if let selectedDirection = selectedDirection {
+            filteredLocations = filteredLocations.filter { $0.direction!.lowercased() == selectedDirection.lowercased() }
         }
         
-        let startLocation = CLLocationCoordinate2D(latitude: sortedStops.first!.latitude!, longitude: sortedStops.first!.longitude!)
-        let endLocation = CLLocationCoordinate2D(latitude: sortedStops.last!.latitude!, longitude: sortedStops.last!.longitude!)
+        // Reload the tableView
+        updateMapRoute()
+    }
+    
+    func setRoute(route: Route){
+        self.route = route
+        stops = DatabaseManager.shared.getStopsFor(route: route)
+        locations = DatabaseManager.shared.getStopLocations(route: route)
         
-        let startPlacemark = MKPlacemark(coordinate: startLocation, addressDictionary: nil)
-        let endPlacemark = MKPlacemark(coordinate: endLocation, addressDictionary: nil)
-        
-        let startMapItem = MKMapItem(placemark: startPlacemark)
-        let endMapItem = MKMapItem(placemark: endPlacemark)
-        
-        let startAnnotation = MKPointAnnotation()
-        startAnnotation.coordinate = startLocation
-        startAnnotation.title = "Start"
-        let endAnnotation = MKPointAnnotation()
-        endAnnotation.coordinate = endLocation
-        endAnnotation.title = "End"
-        
-        
-        // Calculate the route
-        let directionRequest = MKDirectionsRequest()
-        directionRequest.source = startMapItem
-        directionRequest.destination = endMapItem
-        directionRequest.transportType = .automobile
-        
-        // Calculate the direction
-        let directions = MKDirections(request: directionRequest)
-        
-        directions.calculate { (response, error) in
-            // Validation
-            guard let response = response else {
-                if let error = error {
-                    print("Error: \(error)")
-                }
-                return
-            }
-            
-            // Draw the route
-            let route = response.routes[0]
-            self.mapView.add(route.polyline, level: .aboveRoads)
-            
-            let rect = route.polyline.boundingMapRect
-            
-            self.mapView.showAnnotations(annotations, animated: false )
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: false)
+        selectedDay = route.days?.first
+        selectedDirection = route.direction1
+        filterStops()
+        filterLocations()
+    }
+    
+    func shouldDisplayMenuBar() -> Bool {
+        guard let days = route.days else {
+            return false
         }
+        
+        if days.count < 1 {
+            return false
+        }
+        return days[0] != "Everyday"
+    }
+    
+    func updateMapRoute(){
     }
 }
+
 
 
 // MARK: - UITableViewDatasource
@@ -181,7 +191,7 @@ extension StopsController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        cell.textLabel?.text = filteredStops[indexPath.row].name! + " " + filteredStops[indexPath.row].number!
+        cell.textLabel?.text = filteredStops[indexPath.row].name!.lowercased().capitalized
         return cell
     }
     
@@ -211,45 +221,57 @@ extension StopsController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let footerRect = CGRect(x: 0, y: tableView.contentOffset.y, width: tableView.bounds.width, height: 28 + 20)
-        navigationBarFooter.frame = footerRect
-        
-        var headerRect = CGRect(x: 0, y: tableView.contentOffset.y, width: tableView.bounds.width, height: kHeaderHeight)
-        if tableView.contentOffset.y < -kHeaderHeight {
-            headerRect.origin.y = tableView.contentOffset.y
-            headerRect.size.height = -tableView.contentOffset.y
+        // Position the menu view inside the scrollview
+        if shouldDisplayMenuBar() {
+            let menuRect = CGRect(x: 0, y: tableView.contentOffset.y, width: tableView.bounds.width, height: 28 + 20)
+            menuView.frame = menuRect
         }
         
-        mapView.frame = headerRect
+        // Position the map inside the scrollview
+        var mapRect = CGRect(x: 0, y: tableView.contentOffset.y, width: tableView.bounds.width, height: kHeaderHeight)
+        if tableView.contentOffset.y < -kHeaderHeight {
+            mapRect.origin.y = tableView.contentOffset.y
+            mapRect.size.height = -tableView.contentOffset.y
+        }
         
+        mapView.frame = mapRect
+        
+        var directionMenuRect = CGRect(x: 0, y: -48, width: tableView.bounds.width, height: 28 + 20)
+        if tableView.contentOffset.y > -96 && shouldDisplayMenuBar() {
+            directionMenuRect.origin.y = tableView.contentOffset.y + 48
+        } else if tableView.contentOffset.y > -48 {
+            directionMenuRect.origin.y = tableView.contentOffset.y
+        }
+        directionMenuView.frame = directionMenuRect
     }
 
 }
 
-
-// MARK: - MKMapViewDelegate
-
-extension StopsController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .red
-        renderer.lineWidth = 4.0
-        
-        return renderer
-    }
-}
 
 // MARK: - UISegmentControll Target
 
 extension StopsController {
     
-    func directionChanged(segmentedControl: UISegmentedControl){
+    func dayChanged(segmentedControl: UISegmentedControl){
         
-        if segmentedControl.selectedSegmentIndex == 0 {
-            filterStops(direction: route.direction1!)
-        } else {
-            filterStops(direction: route.direction2!)
+        // Return if the days array is null
+        guard let days = route.days else{
+            return
         }
+        
+        // Update the selected day and filter the stops
+        selectedDay = days[segmentedControl.selectedSegmentIndex]
+        filterStops()
+        filterLocations()
+    }
+    func directionChanged(segmentedControl: UISegmentedControl){
+        if segmentedControl.selectedSegmentIndex == 0 {
+            selectedDirection = route.direction1
+        }else{
+            selectedDirection = route.direction2
+        }
+        filterStops()
+        filterLocations()
     }
     
 }

@@ -10,6 +10,7 @@
 		459A1BBBF123C0546BDBF55C /* Pods_ETA_DetroitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D00CE8FAF263DF273549EB /* Pods_ETA_DetroitUITests.framework */; };
 		5ADAC57A35DF6B89916CE6AC /* Pods_ETA_DetroitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7B72F6942D4FF4178D7115 /* Pods_ETA_DetroitTests.framework */; };
 		738D25224ABFCBA36ED7E3B0 /* Pods_ETA_Detroit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */; };
+		7C4CDEEA1E43CA150053540A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4CDEE91E43CA150053540A /* FirebaseManager.swift */; };
 		7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */; };
 		7C4D30471E2E5FBB00EEF8BE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30461E2E5FBB00EEF8BE /* HomeController.swift */; };
 		7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D304B1E2E5FBB00EEF8BE /* Assets.xcassets */; };
@@ -27,8 +28,9 @@
 		7CDF6F671E313AA300A9BA43 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F661E313AA200A9BA43 /* Route.swift */; };
 		7CDF6F741E32F18200A9BA43 /* StopsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F731E32F18200A9BA43 /* StopsController.swift */; };
 		7CDF6F761E32FF9E00A9BA43 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF6F751E32FF9E00A9BA43 /* Stop.swift */; };
+		7CEAE5DF1E3A94E400C18703 /* StopLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEAE5DE1E3A94E400C18703 /* StopLocation.swift */; };
+		7CEAE5E11E3FC61A00C18703 /* ETADetroitDatabase.db in Resources */ = {isa = PBXBuildFile; fileRef = 7CEAE5E01E3FC61A00C18703 /* ETADetroitDatabase.db */; };
 		7CF233A61E36C4F100A79A69 /* UIColor+ETADetroit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF233A51E36C4F100A79A69 /* UIColor+ETADetroit.swift */; };
-		7CF233AE1E379E3E00A79A69 /* ETADetroitSchedule.db in Resources */ = {isa = PBXBuildFile; fileRef = 7CF233AD1E379E3E00A79A69 /* ETADetroitSchedule.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,7 @@
 		097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ETA_Detroit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F45144627649AC9133B7460 /* Pods-ETA DetroitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D0D86DCF18489D272F12BCF /* Pods-ETA Detroit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.release.xcconfig"; sourceTree = "<group>"; };
+		7C4CDEE91E43CA150053540A /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		7C4D30411E2E5FBB00EEF8BE /* ETA Detroit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETA Detroit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C4D30461E2E5FBB00EEF8BE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -75,8 +78,9 @@
 		7CDF6F661E313AA200A9BA43 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		7CDF6F731E32F18200A9BA43 /* StopsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsController.swift; sourceTree = "<group>"; };
 		7CDF6F751E32FF9E00A9BA43 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		7CEAE5DE1E3A94E400C18703 /* StopLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopLocation.swift; sourceTree = "<group>"; };
+		7CEAE5E01E3FC61A00C18703 /* ETADetroitDatabase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ETADetroitDatabase.db; sourceTree = "<group>"; };
 		7CF233A51E36C4F100A79A69 /* UIColor+ETADetroit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ETADetroit.swift"; sourceTree = "<group>"; };
-		7CF233AD1E379E3E00A79A69 /* ETADetroitSchedule.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = ETADetroitSchedule.db; sourceTree = "<group>"; };
 		88391CC479D1261CCE52A3A2 /* Pods-ETA Detroit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.debug.xcconfig"; sourceTree = "<group>"; };
 		9DD9F91D456972FF4EB32EE3 /* Pods-ETA DetroitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1A4BE66AE916C783E2ADD7C /* Pods-ETA DetroitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitTests/Pods-ETA DetroitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			children = (
 				7CDF6F661E313AA200A9BA43 /* Route.swift */,
 				7CDF6F751E32FF9E00A9BA43 /* Stop.swift */,
+				7CEAE5DE1E3A94E400C18703 /* StopLocation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */,
+				7C4CDEE91E43CA150053540A /* FirebaseManager.swift */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -201,7 +207,7 @@
 		7CDF6F721E319D1400A9BA43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7CF233AD1E379E3E00A79A69 /* ETADetroitSchedule.db */,
+				7CEAE5E01E3FC61A00C18703 /* ETADetroitDatabase.db */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -400,8 +406,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */,
-				7CF233AE1E379E3E00A79A69 /* ETADetroitSchedule.db in Resources */,
 				7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */,
+				7CEAE5E11E3FC61A00C18703 /* ETADetroitDatabase.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,11 +576,13 @@
 				7CDF6F671E313AA300A9BA43 /* Route.swift in Sources */,
 				7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */,
 				7CDF6F561E31090500A9BA43 /* ReflexRoutesController.swift in Sources */,
+				7CEAE5DF1E3A94E400C18703 /* StopLocation.swift in Sources */,
 				7CDF6F5C1E310EEE00A9BA43 /* DatabaseManager.swift in Sources */,
 				7C4D30741E2E8DAF00EEF8BE /* BusSelectionView.swift in Sources */,
 				7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */,
 				7CDF6F761E32FF9E00A9BA43 /* Stop.swift in Sources */,
 				7CDF6F741E32F18200A9BA43 /* StopsController.swift in Sources */,
+				7C4CDEEA1E43CA150053540A /* FirebaseManager.swift in Sources */,
 				7CDF6F581E31091600A9BA43 /* RoutesController.swift in Sources */,
 				7CDF6F641E3132AD00A9BA43 /* RouteCell.swift in Sources */,
 			);
@@ -724,7 +732,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q96936RRXW;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -740,7 +748,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Q96936RRXW;
 				INFOPLIST_FILE = "ETA Detroit/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riis.ETA-Detroit";
 				PRODUCT_NAME = "$(TARGET_NAME)";

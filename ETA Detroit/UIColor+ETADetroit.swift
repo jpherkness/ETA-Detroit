@@ -38,7 +38,7 @@ extension UIColor {
     }
     
     class func etadSmartBrandColor() -> UIColor {
-        return UIColor(red:0.74, green:0.05, blue:0.16, alpha:1.00)
+        return UIColor(red:0.94, green:0.25, blue:0.24, alpha:1.00)
     }
     
     class func etadDdotBrandColor() -> UIColor {
@@ -46,7 +46,7 @@ extension UIColor {
     }
     
     class func etadReflexBrandColor() -> UIColor {
-        return UIColor(red:0.29, green:0.55, blue:0.77, alpha:1.00)
+        return UIColor(red:0.17, green:0.39, blue:0.82, alpha:1.00)
     }
     
 }

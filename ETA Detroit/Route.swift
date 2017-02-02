@@ -35,7 +35,6 @@ struct Route {
     var name: String?
     var direction1: String?
     var direction2: String?
-    var active: Bool?
     var days: [String]?
     
 }

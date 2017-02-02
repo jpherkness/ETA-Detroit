@@ -76,7 +76,7 @@ class BusSelectionView: UIView {
         
         textLabel.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(self)
-            make.height.equalTo(50)
+            make.height.equalTo(40)
         }
         
         super.updateConstraints()
