@@ -49,7 +49,7 @@ class SmartRoutesController: RoutesController {
     }
 
     override func getRoutes() -> [Route] {
-        return DatabaseManager.shared.getSmartRoutes()
+        return SqliteManager.sharedInstance.getSmartRoutes()
     }
     
 }

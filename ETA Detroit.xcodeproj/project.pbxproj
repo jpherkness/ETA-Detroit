@@ -11,6 +11,8 @@
 		5ADAC57A35DF6B89916CE6AC /* Pods_ETA_DetroitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7B72F6942D4FF4178D7115 /* Pods_ETA_DetroitTests.framework */; };
 		738D25224ABFCBA36ED7E3B0 /* Pods_ETA_Detroit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097C9AECECD99D4991FCE49A /* Pods_ETA_Detroit.framework */; };
 		7C4CDEEA1E43CA150053540A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4CDEE91E43CA150053540A /* FirebaseManager.swift */; };
+		7C4CDEEC1E43CE080053540A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C4CDEEB1E43CE080053540A /* GoogleService-Info.plist */; };
+		7C4CDEEE1E43CF910053540A /* SqliteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4CDEED1E43CF910053540A /* SqliteManager.swift */; };
 		7C4D30451E2E5FBB00EEF8BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */; };
 		7C4D30471E2E5FBB00EEF8BE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D30461E2E5FBB00EEF8BE /* HomeController.swift */; };
 		7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D304B1E2E5FBB00EEF8BE /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		3F45144627649AC9133B7460 /* Pods-ETA DetroitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA DetroitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA DetroitUITests/Pods-ETA DetroitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D0D86DCF18489D272F12BCF /* Pods-ETA Detroit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ETA Detroit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ETA Detroit/Pods-ETA Detroit.release.xcconfig"; sourceTree = "<group>"; };
 		7C4CDEE91E43CA150053540A /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		7C4CDEEB1E43CE080053540A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7C4CDEED1E43CF910053540A /* SqliteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteManager.swift; sourceTree = "<group>"; };
 		7C4D30411E2E5FBB00EEF8BE /* ETA Detroit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETA Detroit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D30441E2E5FBB00EEF8BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C4D30461E2E5FBB00EEF8BE /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				7C4D304B1E2E5FBB00EEF8BE /* Assets.xcassets */,
 				7C4D304D1E2E5FBB00EEF8BE /* LaunchScreen.storyboard */,
 				7C4D30501E2E5FBB00EEF8BE /* Info.plist */,
+				7C4CDEEB1E43CE080053540A /* GoogleService-Info.plist */,
 			);
 			path = "ETA Detroit";
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			children = (
 				7CDF6F5B1E310EEE00A9BA43 /* DatabaseManager.swift */,
 				7C4CDEE91E43CA150053540A /* FirebaseManager.swift */,
+				7C4CDEED1E43CF910053540A /* SqliteManager.swift */,
 			);
 			name = Stores;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C4D304F1E2E5FBB00EEF8BE /* LaunchScreen.storyboard in Resources */,
+				7C4CDEEC1E43CE080053540A /* GoogleService-Info.plist in Resources */,
 				7C4D304C1E2E5FBB00EEF8BE /* Assets.xcassets in Resources */,
 				7CEAE5E11E3FC61A00C18703 /* ETADetroitDatabase.db in Resources */,
 			);
@@ -581,6 +588,7 @@
 				7C4D30741E2E8DAF00EEF8BE /* BusSelectionView.swift in Sources */,
 				7CDF6F541E3108F500A9BA43 /* SmartBusRoutesController.swift in Sources */,
 				7CDF6F761E32FF9E00A9BA43 /* Stop.swift in Sources */,
+				7C4CDEEE1E43CF910053540A /* SqliteManager.swift in Sources */,
 				7CDF6F741E32F18200A9BA43 /* StopsController.swift in Sources */,
 				7C4CDEEA1E43CA150053540A /* FirebaseManager.swift in Sources */,
 				7CDF6F581E31091600A9BA43 /* RoutesController.swift in Sources */,

@@ -51,7 +51,7 @@ class DdotRoutesController: RoutesController {
     }
     
     override func getRoutes() -> [Route] {
-        return DatabaseManager.shared.getDDOTRoutes()
+        return SqliteManager.sharedInstance.getDDOTRoutes()
     }
 
 }

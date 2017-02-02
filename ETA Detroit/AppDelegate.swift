@@ -24,6 +24,7 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,21 +34,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Google Maps
+        // MARK: Google Maps
         
         GMSServices.provideAPIKey("AIzaSyAU8eUeJxWvou5LUSqXDjfgH_ajqwzEPxo")
         
-        // Application Style
+        // MARK: Firebase
+        
+        FIRApp.configure()
+        
+        // MARK: Default Application Style
         
         application.statusBarStyle = UIStatusBarStyle.lightContent
         
-        // Initial View Controller
+        // MARK: Initial View Controller
         
         let viewController = HomeController()
         let navigationController = UINavigationController(rootViewController: viewController)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+        
+        // MARK: Default Custom Appearance
         
         customAppearance()
         

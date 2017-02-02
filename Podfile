@@ -9,15 +9,7 @@ target 'ETA Detroit' do
   pod 'SnapKit', '~> 3.1.2'
   pod 'FMDB'
   pod 'GoogleMaps'
-
-  target 'ETA DetroitTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ETA DetroitUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
 end

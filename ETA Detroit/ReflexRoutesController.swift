@@ -49,6 +49,6 @@ class ReflexRoutesController: RoutesController {
     }
     
     override func getRoutes() -> [Route] {
-        return DatabaseManager.shared.getReflexRoutes()
+        return SqliteManager.sharedInstance.getReflexRoutes()
     }
 }

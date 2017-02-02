@@ -159,8 +159,8 @@ class StopsController: UITableViewController {
     
     func setRoute(route: Route){
         self.route = route
-        stops = DatabaseManager.shared.getStopsFor(route: route)
-        locations = DatabaseManager.shared.getStopLocations(route: route)
+        stops = SqliteManager.sharedInstance.getStopsFor(route: route)
+        locations = SqliteManager.sharedInstance.getStopLocations(route: route)
         
         selectedDay = route.days?.first
         selectedDirection = route.direction1
