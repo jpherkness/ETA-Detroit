@@ -41,7 +41,7 @@ protocol DatabaseManager {
     
     func getStopsFor(route: Route) -> [Stop]
     
-    func getStopLocations(route: Route) -> [StopLocation]
+    func getStopLocationsFor(route: Route) -> [StopLocation]
     
     
 }

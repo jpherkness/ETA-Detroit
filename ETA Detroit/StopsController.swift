@@ -47,13 +47,11 @@ class StopsController: UITableViewController {
     public var route: Route!
     public var stops = [Stop]()
     public var filteredStops = [Stop]()
-    
     public var locations = [StopLocation]()
     public var filteredLocations = [StopLocation]()
-    
     public var selectedDay: String?
     public var selectedDirection: String?
-    
+
     // MARK: UIViewController
     
     init(route: Route) {
@@ -160,7 +158,7 @@ class StopsController: UITableViewController {
     func setRoute(route: Route){
         self.route = route
         stops = SqliteManager.sharedInstance.getStopsFor(route: route)
-        locations = SqliteManager.sharedInstance.getStopLocations(route: route)
+        locations = SqliteManager.sharedInstance.getStopLocationsFor(route: route)
         
         selectedDay = route.days?.first
         selectedDirection = route.direction1
@@ -180,6 +178,43 @@ class StopsController: UITableViewController {
     }
     
     func updateMapRoute(){
+        let origin = CLLocationCoordinate2D(latitude: filteredLocations[0].latitude!, longitude: filteredLocations[0].longitude!)
+        let destination = CLLocationCoordinate2D(latitude: filteredLocations[1].latitude!, longitude: filteredLocations[1].longitude!)
+        getDirections(origin: origin, destination: destination, transitMode: "bus") { (msg, success) in
+            print(msg)
+        }
+    }
+    
+    func getDirections(origin: CLLocationCoordinate2D!, destination: CLLocationCoordinate2D!, transitMode: String!, completion: @escaping ((String, Bool) -> Void)) {
+        
+        guard let origin = origin else {
+            completion("Origin is nil", false)
+            return
+        }
+        
+        guard let destination = destination else {
+            completion("Destination is nil", false)
+            return
+        }
+        
+        let originString = String(origin.latitude) + "," + String(origin.longitude)
+        let destinationString = String(destination.latitude) + "," + String(destination.longitude)
+        
+        let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
+        var directionsURLString = baseURLDirections + "origin=" + originString + "&destination=" + destinationString + "&transit_mode=" + transitMode
+        directionsURLString = directionsURLString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let directionsURL = URL(string: directionsURLString)!
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                let directionsData = try Data(contentsOf: directionsURL)
+                let parsedData = try JSONSerialization.jsonObject(with: directionsData, options: .allowFragments)
+                print(parsedData)
+                
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
